@@ -20,6 +20,10 @@ UDB * DBLoader::GetDB()
 
 UClass * DBLoader::LoadBPClass(UDBItem * item, FString key)
 {
+	if (item == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Item cant be null"));
+	}
 	FString FullAssetName = item->GetName().Append(FString(TEXT("+"))).Append(key);
 	FString ClassName = FString::Printf(TEXT("%s.%s_C"), *FullAssetName, *FullAssetName); 
 	FString Path = item->GetPathName().LeftChop((item->GetName().Len() * 2) + 1).Append(ClassName);

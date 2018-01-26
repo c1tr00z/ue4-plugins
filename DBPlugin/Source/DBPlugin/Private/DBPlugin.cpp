@@ -123,7 +123,21 @@ FReply FDBPluginModule::CollectDB()
 		}
 	}
 
+	if (DB == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("DB object not found in folder Game/DB"));
+		return FReply::Handled();
+	}
+
+	UPackage* Package = CreatePackage(NULL, TEXT("/Game/DB/DB"));
+	Package->FullyLoad();
+
 	DB->Items = Items;
+	DB->SaveConfig();
+	Package->MarkPackageDirty();
+
+	FString PackageFileName = FPackageName::LongPackageNameToFilename(TEXT("/Game/DB/DB"), FPackageName::GetAssetPackageExtension());
+	bool bSaved = UPackage::SavePackage(Package, DB, EObjectFlags::RF_Public | EObjectFlags::RF_Standalone, *PackageFileName, GError, nullptr, true, true, SAVE_NoError);
 
 	UE_LOG(LogTemp, Warning, TEXT("assets : %d"), AssetDatas.Num());
 
