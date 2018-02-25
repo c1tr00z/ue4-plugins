@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"FriendlyName": "AssistUtils",
+	"Description": "",
+	"Category": "Other",
+	"CreatedBy": "c1tr00z",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "AssistUtils",
+			"Type": "Developer",
+			"LoadingPhase": "Default"
+		}
+	]
+}
